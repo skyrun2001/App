@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FocusGuard</string>
+
+    <!-- Accessibility service -->
+    <string name="accessibility_service_label">FocusGuard App Monitor</string>
+    <string name="accessibility_service_description">FocusGuard monitors which apps are in the foreground to enforce your configured usage rules and time limits.</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_apps">Apps</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="steps_today">Steps Today</string>
+    <string name="active_restrictions">Active Restrictions</string>
+    <string name="apps_blocked_today">Apps Blocked Today</string>
+    <string name="setup_accessibility">Enable Accessibility Service</string>
+    <string name="setup_accessibility_desc">Required to monitor and block apps based on your rules.</string>
+    <string name="setup_usage_stats">Grant Usage Access</string>
+    <string name="setup_usage_stats_desc">Required to track daily app usage time.</string>
+
+    <!-- App list -->
+    <string name="app_list_title">App Restrictions</string>
+    <string name="search_apps">Search apps…</string>
+    <string name="no_restriction">No restriction</string>
+    <string name="restricted">Restricted</string>
+
+    <!-- Restriction edit -->
+    <string name="edit_restriction_title">Edit Restriction</string>
+    <string name="enable_restriction">Enable restriction</string>
+    <string name="required_steps">Required step count</string>
+    <string name="required_steps_hint">0 = no step requirement</string>
+    <string name="daily_limit">Daily time limit (minutes)</string>
+    <string name="daily_limit_hint">0 = no daily limit</string>
+    <string name="time_windows">Allowed time windows</string>
+    <string name="add_time_window">Add time window</string>
+    <string name="no_time_windows">No time windows set – app is always allowed (if other conditions are met).</string>
+    <string name="save">Save</string>
+    <string name="delete_restriction">Delete restriction</string>
+
+    <!-- Blocked screen -->
+    <string name="blocked_title">App Blocked</string>
+    <string name="blocked_reason_time_window">This app is not allowed at the current time.</string>
+    <string name="blocked_reason_steps">You need more steps before using this app.</string>
+    <string name="blocked_reason_daily_limit">You have reached the daily time limit for this app.</string>
+    <string name="go_back">Go back</string>
+    <string name="steps_needed">Steps needed: %1$d</string>
+    <string name="steps_current">Your steps: %1$d</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_permissions">Permissions</string>
+    <string name="settings_accessibility">Accessibility Service</string>
+    <string name="settings_usage_stats">Usage Statistics Access</string>
+    <string name="settings_activity_recognition">Activity Recognition</string>
+    <string name="settings_overlay">Draw Over Other Apps</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
+    <string name="open_settings">Open settings</string>
+</resources>

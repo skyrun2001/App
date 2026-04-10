@@ -1,0 +1,3 @@
+-keep class com.focusguard.app.data.database.entity.** { *; }
+-keep class com.focusguard.app.domain.model.** { *; }
+-keepattributes *Annotation*
