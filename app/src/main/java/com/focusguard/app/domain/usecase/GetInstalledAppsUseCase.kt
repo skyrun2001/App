@@ -3,9 +3,12 @@ package com.focusguard.app.domain.usecase
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
+import android.os.Build
 import com.focusguard.app.domain.model.AppInfo
 import com.focusguard.app.domain.repository.AppRestrictionRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 /**
@@ -20,14 +23,20 @@ class GetInstalledAppsUseCase @Inject constructor(
         val packageManager = context.packageManager
         val launchIntent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
 
-        val resolvedApps = packageManager.queryIntentActivities(launchIntent, PackageManager.MATCH_ALL)
+        // Use MATCH_ALL only on older APIs; on API 30+ PackageManager visibility rules apply
+        val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            PackageManager.MATCH_ALL
+        } else {
+            0
+        }
+        val resolvedApps: List<ResolveInfo> = packageManager.queryIntentActivities(launchIntent, flags)
+
+        // .first() takes one snapshot from the Room Flow and cancels immediately,
+        // avoiding the infinite-hang that .collect{} would cause on a never-completing Flow.
         val restrictedPackages = restrictionRepository.observeAll()
-            .let { flow ->
-                // Collect once for a snapshot
-                val list = mutableListOf<String>()
-                flow.collect { list.addAll(it.map { r -> r.packageName }) }
-                list.toSet()
-            }
+            .first()
+            .map { it.packageName }
+            .toSet()
 
         return resolvedApps
             .asSequence()

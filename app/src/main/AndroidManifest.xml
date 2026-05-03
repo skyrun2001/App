@@ -27,6 +27,18 @@
         android:name="android.hardware.sensor.stepcounter"
         android:required="false" />
 
+    <!--
+        On Android 11+ (API 30) package visibility is restricted.
+        This tells the OS that we want to see all apps with a launcher intent,
+        which is needed to populate the app-restriction list.
+    -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
     <application
         android:name=".FocusGuardApp"
         android:allowBackup="true"
